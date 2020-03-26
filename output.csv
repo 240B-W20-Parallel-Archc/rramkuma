@@ -1,0 +1,3 @@
+ArraySize(inKB),Thread_Count,Random,Sequential,Read_Modify_Write,CPU_TIME
+512.000000,1,1,0,0,18.402100
+512.000000,1,1,0,1,14.785767
