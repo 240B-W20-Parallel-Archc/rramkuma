@@ -14,9 +14,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <pthread.h>
+
 
 //Functions that read input arguments and decides thread/seq etc
 // Run ./cacheperf --options
 
+//Defaults
+void performance_latency();
 
 #endif /* CACHEPERF_H_ */
