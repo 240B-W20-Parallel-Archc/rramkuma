@@ -14,7 +14,7 @@ bool random_flag;
 bool seq_flag;
 bool write_flag;
 int stride;
-int array_size_in_kb;
+double array_size_in_kb;
 
 
 struct Node {
@@ -100,7 +100,7 @@ void performance_latency() {
 			}
 		end = clock();
 		cpu_time_in_ns = (1e9 * ( (double)(end - start)/CLOCKS_PER_SEC)) / read_count;
-		fprintf(fp,"%d,%d,%d,%d,%d,%lf\n", array_size_in_kb,thread_count,random_flag,seq_flag,write_flag,cpu_time_in_ns);
+		fprintf(fp,"%lf,%d,%d,%d,%d,%lf\n", array_size_in_kb,thread_count,random_flag,seq_flag,write_flag,cpu_time_in_ns);
 		//printf("For these settings: random_flag: %d, seq_flag: %d, write_flag: %d, size:%d, cputime:%f\n", random_flag, seq_flag, write_flag, array_size,cpu_time_in_ns);
 		//printf("CPU time in ns is %f \n", cpu_time_in_ns);
 		}
@@ -125,7 +125,7 @@ void performance_latency() {
 		end_rmw = clock();
 		cpu_time_rmw = (1e9 * ( (double)(end_rmw - start_rmw)/CLOCKS_PER_SEC)) / rmw_count;
 		//fprintf(fp, "ArraySize,Thread_Count,Random,Sequential,Read_Modify_Write,CPU_TIME\n");
-		fprintf(fp,"%d,%d,%d,%d,%d,%lf\n", array_size_in_kb,thread_count,random_flag,seq_flag,write_flag,cpu_time_rmw);
+		fprintf(fp,"%lf,%d,%d,%d,%d,%lf\n", array_size_in_kb,thread_count,random_flag,seq_flag,write_flag,cpu_time_rmw);
 		// random_flag, seq_flag, write_flag, array_size,cpu_time_rmw);
 
 	}

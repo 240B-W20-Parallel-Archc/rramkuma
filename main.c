@@ -15,7 +15,7 @@ bool seq_flag = false;
 bool random_flag = false;
 bool write_flag = false;
 int stride = 1;
-int array_size_in_kb = 1;
+double array_size_in_kb = 1.0;
 //(int) (array_size / 1024);
 
 void print_usage() {
@@ -25,14 +25,15 @@ void print_usage() {
 	fprintf(stderr, "	-s/-r (seq or random access) \n");
 	fprintf(stderr, "	-size:<array_size> (in KB) \n");
 	fprintf(stderr, " 	-stride:<stride length> (only for use with sequential) \n");
+	fprintf(stderr, " 	-write (For changing to read-modify-write mode, default is read\n)");
 }
 
 int handling_inputs(char *arg) {
 	if(!(strncmp(arg,"-t:",3))) {
 		sscanf(arg+3,"%d", &thread_count);
 	} else if (!strncmp(arg,"-size:",6)) {
-		sscanf(arg+6, "%d", &array_size_in_kb);
-		array_size = 1024*array_size_in_kb;
+		sscanf(arg+6, "%lf", &array_size_in_kb);
+		array_size = (int)(1024*array_size_in_kb);
 	} else if (!strncmp(arg,"-s",2)) {
 		seq_flag = true;
 	} else if (!strncmp(arg,"-r",2)) {
