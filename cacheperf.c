@@ -24,7 +24,7 @@ struct Node {
 
 void randomize_ll(struct Node **node_list) {
 	int len = (array_size)/(sizeof(int));
-	for (int i = 0; i < 5; i++) {
+	for (int j = 0; j < 5; j++) {
 		for (int i = 0; i < len - 1; i++) {
 				int swap_idx = rand() % (len - 1);
 				struct Node* tmp;
